@@ -13,13 +13,12 @@ public class Player : MonoBehaviour
         speed = 2;
     }
 
-    // Start is called before the first frame update
+
     void Start()
     {
         view = GetComponent<PhotonView>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (view.IsMine)
