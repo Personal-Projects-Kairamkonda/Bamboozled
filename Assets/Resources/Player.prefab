@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4011814327583067986}
   - component: {fileID: 7241580813883758274}
+  - component: {fileID: 3723175859658133331}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -56,9 +57,29 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 982185811732011681}
   - {fileID: 1645639832414765865}
+  - {fileID: 0}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &3723175859658133331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6351229271528924826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ce665355fe4e49d1a462748adfe1ebb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerProperties:
+    thirdPersonController: {fileID: 8470919260903857420}
+    camera: {fileID: 4324680627816237588}
+    followCame: {fileID: 1175287663303756596}
+    playerID: 0
+    playerName: 
+    playerScore: 0
 --- !u!1001 &932828210570659251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2070925441746177671, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2070925441746177912, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
       propertyPath: m_RootOrder
@@ -133,6 +154,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2070925441746177912, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
   m_PrefabInstance: {fileID: 932828210570659251}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1175287663303756596 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2070925441746177671, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
+  m_PrefabInstance: {fileID: 932828210570659251}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4622083905107083534
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -159,7 +185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409498, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
       propertyPath: m_RootOrder
@@ -328,6 +354,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: GroundLayers.m_Bits
       value: 1
       objectReference: {fileID: 0}
@@ -404,7 +434,7 @@ MonoBehaviour:
     SynchronizeType: 1
     Name: Speed
   - Type: 4
-    SynchronizeType: 1
+    SynchronizeType: 0
     Name: Jump
   - Type: 4
     SynchronizeType: 1
@@ -416,8 +446,19 @@ MonoBehaviour:
     SynchronizeType: 1
     Name: MotionSpeed
   m_SynchronizeLayers:
-  - SynchronizeType: 0
+  - SynchronizeType: 1
     LayerIndex: 0
+--- !u!114 &8470919260903857420 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+  m_PrefabInstance: {fileID: 5242984849935964118}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8470919260903857415}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26e54e5a728a9234ab24fcf1460ed8a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &9134725575116588989 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}

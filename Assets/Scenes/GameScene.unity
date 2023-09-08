@@ -456,7 +456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e154db1640747768e55427077e9148, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 1296917550880532399, guid: 2fc467e9d492b44e9a70811cedb149d3, type: 3}
+  playerPrefab: {fileID: 6351229271528924826, guid: 3e457bfff9b87457594bd1bdb0332d5e, type: 3}
   minX: -2
   maxX: 2
   minZ: 2

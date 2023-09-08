@@ -6,7 +6,7 @@ using Photon.Pun;
 
 public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 {
-
+    [Header("Sever settings")]
     public SettingsData createSettings;
     public SettingsData joinSettings;
 

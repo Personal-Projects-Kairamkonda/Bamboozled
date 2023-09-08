@@ -2,12 +2,15 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
+using StarterAssets;
 
 public class PlayerSync : MonoBehaviourPunCallbacks
 {
-    private PhotonView photonView;
 
-    private PlayerProperties playerProperties;
+    [Header("Player Properties")]
+    [SerializeField] private PlayerProperties playerProperties;
+
+    private PhotonView photonView;
 
     private void Start()
     {
@@ -21,6 +24,15 @@ public class PlayerSync : MonoBehaviourPunCallbacks
         transform.GetComponent<TextMeshPro>().text = playerProperties.playerID.ToString();
     }
 
+
+
+    public void IsLocalPlayer()
+    {
+        playerProperties.thirdPersonController.enabled = true;
+        playerProperties.camera.SetActive(true);
+        playerProperties.followCame.SetActive(true);
+    }
+    
     private void Update()
     {
         if (photonView.IsMine)
@@ -48,8 +60,16 @@ public class PlayerSync : MonoBehaviourPunCallbacks
 [System.Serializable]
 public class PlayerProperties
 {
+    public ThirdPersonController thirdPersonController;
+    [Space]
+    public GameObject camera;
+    [Space]
+    public GameObject followCame;
+    [Space]
     public int playerID;
     public string playerName;
     public int playerScore;
+    
+
     // Add more properties as needed
 }
