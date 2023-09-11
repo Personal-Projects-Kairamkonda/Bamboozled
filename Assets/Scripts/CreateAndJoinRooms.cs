@@ -6,27 +6,13 @@ using Photon.Pun;
 
 public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 {
-    [Header("Sever settings")]
-    public SettingsData createSettings;
-    public SettingsData joinSettings;
+  
 
     private void Start()
     {
-        createSettings.button.onClick.AddListener(() => CreateRoom());
-        joinSettings.button.onClick.AddListener(() => JoinRoom());
+        
     }
 
-    public void CreateRoom()
-    {
-        Debug.Log("Room Created");
-        PhotonNetwork.CreateRoom(createSettings.inputField.text);
-    }
-
-    public void JoinRoom()
-    {
-        Debug.Log("Joined Room");
-        PhotonNetwork.JoinRoom(joinSettings.inputField.text);
-    }
 
     public override void OnJoinedRoom()
     {
@@ -35,10 +21,4 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
 }
 
-[System.Serializable]
-public class SettingsData
-{
-    public Button button;
-    public InputField inputField;
-}
 

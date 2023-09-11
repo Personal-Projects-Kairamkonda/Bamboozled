@@ -6,11 +6,18 @@ using TMPro;
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
     #region Class variables
+    [Header("User panels")]
+    public GameObject roomPanel;
+
+    [Header("Sever settings")]
+    public SettingsData createSettings;
+    public SettingsData joinSettings;
+
     [Header("Texts")]
     public TextMeshProUGUI connectionStatusText;
 
     [Header("Buttons")]
-    public Button connectButton;
+    public Button randomRoomButton;
 
     [Header("Enable if player has no camera")]
     public bool cameraView;
@@ -20,11 +27,14 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private void Awake()
     {
         PhotonNetwork.AutomaticallySyncScene = true;
+        Connect();
     }
 
     void Start()
     {
-        connectButton.onClick.AddListener(() => Connect());
+        randomRoomButton.onClick.AddListener(() => RandomRoom());
+        createSettings.button.onClick.AddListener(() => OnCreateRoom());
+        joinSettings.button.onClick.AddListener(() => OnJoinRoom());
     }
 
     private void Update()
@@ -39,17 +49,15 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     /// </summary>
     public override void OnConnectedToMaster()
     {
-        //PhotonNetwork.JoinLobby();
+        PhotonNetwork.JoinLobby();
 
         // Creates a random room. if the room isn't already created, the thread calls "OnJoinRandomFailed()".
-        PhotonNetwork.JoinRandomRoom();
+        //PhotonNetwork.JoinRandomRoom();
     }
 
     public override void OnJoinedLobby()
     {
-        //SceneManager.LoadScene(Constants.lobbyScene);
-
-        Debug.LogError($"Connected to a server, looking for a random room.");
+       Debug.LogError($"Connected to a server, looking for a random room.");
     }
 
     /// <summary>
@@ -85,6 +93,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     #region Class methods
     private void Connect()
     {
+        PhotonNetwork.ConnectUsingSettings();
+    }
+   
+    private void RandomRoom()
+    {
         if(PhotonNetwork.IsConnected)
             // Joins a random room if it is connected.
             PhotonNetwork.JoinRandomRoom();
@@ -93,21 +106,33 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             PhotonNetwork.ConnectUsingSettings();
     }
 
+    public void OnCreateRoom()
+    {
+        Debug.Log("Room Created");
+        PhotonNetwork.CreateRoom(createSettings.inputField.text);
+    }
+
+    public void OnJoinRoom()
+    {
+        Debug.Log("Joined Room");
+        PhotonNetwork.JoinRoom(joinSettings.inputField.text);
+    }
+
     private string UpdateConnectionStatus(string message)
     {
         return connectionStatusText.text = "Connection status: "+message;
-    }
-
-    private void DisableConnectButton()
-    {
-        connectButton.gameObject.SetActive(false);
     }
 
     private void DisableConnectUI()
     {
         DisableConnectButton();
         DisableLobbyCamera();
+    }
 
+    private void DisableConnectButton()
+    {
+        //randomRoomButton.gameObject.SetActive(false);
+        roomPanel.SetActive(false);
     }
 
     private void DisableLobbyCamera()
