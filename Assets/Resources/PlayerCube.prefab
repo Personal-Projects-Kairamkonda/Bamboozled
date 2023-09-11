@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3260890292254688451}
   - component: {fileID: 7205524307925159506}
   - component: {fileID: 5964649437987312117}
-  - component: {fileID: 2359070227351348086}
   - component: {fileID: 164387132687104621}
   - component: {fileID: 7759455477193651279}
   - component: {fileID: 8690281365834191275}
@@ -73,18 +72,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee14899a617e341b0ac7b6f8bd159667, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2359070227351348086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1296917550880532399}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ce665355fe4e49d1a462748adfe1ebb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &164387132687104621
@@ -214,7 +201,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -235,7 +222,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2117251782545156461
 RectTransform:
   m_ObjectHideFlags: 0

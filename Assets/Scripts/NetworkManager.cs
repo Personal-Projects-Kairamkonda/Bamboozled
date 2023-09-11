@@ -1,35 +1,24 @@
+using UnityEngine.UI;
+using UnityEngine;
 using Photon.Pun;
 using TMPro;
-using UnityEngine;
-using UnityEngine.UI;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
     #region Class variables
-    [Header("Player Properties")]
-    [SerializeField] private GameObject playerPrefab;
-    [SerializeField] private Transform spawnTransform;
-
     [Header("Texts")]
     public TextMeshProUGUI connectionStatusText;
 
     [Header("Buttons")]
     public Button connectButton;
 
-    [Header("Disable On Connect")]
-    [SerializeField] private GameObject mainCamera;
-    #endregion
-
-    #region Components
-    [Header("Components dependancies")]
-    [SerializeField]private PhotonView view;
-
+    [Header("Enable if player has no camera")]
+    public bool cameraView;
     #endregion
 
     #region Unity default methods
     private void Awake()
     {
-        GetRequiredComponentsReferences();
         PhotonNetwork.AutomaticallySyncScene = true;
     }
 
@@ -45,7 +34,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     #endregion
 
     #region Pun callbacks override methods
-
     /// <summary>
     /// Connects to master server.
     /// </summary>
@@ -80,10 +68,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     /// </summary>
     public override void OnJoinedRoom()
     {
-        Debug.LogError($"Player {PhotonNetwork.LocalPlayer.ActorNumber} joined the room.");
-
-        // Private method to a spawn player and disable some gameobjects before spawing.
-        SpawnPlayers();
+        // Disable some gameobjects before spawing.
+        DisableConnectUI();
     }
 
     /// <summary>
@@ -96,7 +82,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     }
     #endregion
 
-    #region Private methods
+    #region Class methods
     private void Connect()
     {
         if(PhotonNetwork.IsConnected)
@@ -117,23 +103,18 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         connectButton.gameObject.SetActive(false);
     }
 
-    private void SpawnPlayers()
+    private void DisableConnectUI()
     {
         DisableConnectButton();
         DisableLobbyCamera();
 
-        // Spawns the player when joined in a room.
-        PhotonNetwork.Instantiate(playerPrefab.name, spawnTransform.position, Quaternion.identity);
     }
 
     private void DisableLobbyCamera()
     {
-        mainCamera.gameObject.SetActive(false);
+        Camera.main.enabled = cameraView;
     }
 
-    private void GetRequiredComponentsReferences()
-    {
-        view = playerPrefab.GetComponentInChildren<PhotonView>();
-    }
+  
     #endregion
 }

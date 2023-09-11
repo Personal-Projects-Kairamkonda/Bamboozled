@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Player : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     private float speed;
     PhotonView view;
@@ -22,10 +22,10 @@ public class Player : MonoBehaviour
     void Update()
     {
         if (view.IsMine)
-            Movement();
+            Move();
     }
 
-    public void Movement()
+    public void Move()
     {
         if(Input.GetKey(KeyCode.W))
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
