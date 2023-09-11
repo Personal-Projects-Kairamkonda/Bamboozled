@@ -10,21 +10,19 @@ public class PlayerSync : MonoBehaviourPunCallbacks
     [Header("Player Properties")]
     [SerializeField] private PlayerProperties playerProperties;
 
-    private PhotonView photonView;
+    private PhotonView view;
 
     private void Start()
     {
-        photonView = GetComponent<PhotonView>();
+        view = GetComponent<PhotonView>();
 
         // Initialize player properties
         playerProperties = new PlayerProperties();
-        playerProperties.playerID = photonView.ViewID;
-        playerProperties.playerName = "Player" + photonView.ViewID;
+        playerProperties.playerID = view.ViewID;
+        playerProperties.playerName = "Player" + view.ViewID;
         playerProperties.playerScore = 0;
         transform.GetComponent<TextMeshPro>().text = playerProperties.playerID.ToString();
     }
-
-
 
     public void IsLocalPlayer()
     {
@@ -35,13 +33,13 @@ public class PlayerSync : MonoBehaviourPunCallbacks
     
     private void Update()
     {
-        if (photonView.IsMine)
+        if (view.IsMine)
         {
             // Update player properties locally for the owning player
             // Example: playerProperties.playerScore += 1;
 
             // Sync the updated properties to other players
-            photonView.RPC("UpdatePlayerProperties", RpcTarget.All, playerProperties);
+            view.RPC("UpdatePlayerProperties", RpcTarget.All, playerProperties);
         }
     }
 

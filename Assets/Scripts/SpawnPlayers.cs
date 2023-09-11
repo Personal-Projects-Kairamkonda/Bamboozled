@@ -16,7 +16,7 @@ public class SpawnPlayers : MonoBehaviour
     public float maxZ;
 
 
-    #region Unity Methods
+    #region Unity default methods
     void Start()
     {
        Vector3 randomPosition = new Vector3(Random.Range(minX, maxX),0, Random.Range(minZ, maxZ));
@@ -29,5 +29,5 @@ public class SpawnPlayers : MonoBehaviour
     {
         
     }
-    #endregion Unity methods
+    #endregion 
 }

@@ -158,22 +158,17 @@ namespace StarterAssets
 
         private void Update()
         {
-            if (view.IsMine)
-            {
                 _hasAnimator = TryGetComponent(out _animator);
 
                 JumpAndGravity();
                 GroundedCheck();
                 Move();
-            }
+            
         }
 
         private void LateUpdate()
         {
-            if (view.IsMine)
-            {
                 CameraRotation();
-            }
         }
 
         private void AssignAnimationIDs()

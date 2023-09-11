@@ -8,13 +8,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LoadingScene.unity
     guid: e0ff020c4f6a04f7791ec1dc61c7e5a1
-  - enabled: 1
-    path: Assets/Scenes/LobbyScene.unity
-    guid: 10da5d4cdedf94486b51a3c0c748f19e
-  - enabled: 1
-    path: Assets/Scenes/GameScene.unity
-    guid: 928e98b43adf043c2949966a6b0d9015
-  - enabled: 1
-    path: Assets/StarterAssets/ThirdPersonController/Scenes/Playground.unity
-    guid: e9017d5f96b9f09489b4b37e1d6eb914
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}
